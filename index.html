@@ -6,60 +6,258 @@
     <title>Emran Chowdhury | Portfolio</title>
 
     <style>
+        :root {
+            --navy: #172554;
+            --blue: #2563eb;
+            --teal: #14b8a6;
+            --green: #22c55e;
+            --amber: #f59e0b;
+            --pink: #ec4899;
+            --purple: #8b5cf6;
+            --orange: #f97316;
+            --light: #f8fafc;
+            --text: #1f2937;
+            --muted: #64748b;
+            --card: rgba(255, 255, 255, 0.92);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(20, 184, 166, 0.22), transparent 32%),
+                radial-gradient(circle at top right, rgba(236, 72, 153, 0.18), transparent 28%),
+                linear-gradient(135deg, #eef2ff 0%, #f0fdfa 45%, #fff7ed 100%);
+            color: var(--text);
+            line-height: 1.7;
         }
 
         header {
-            background: #333;
             color: white;
             text-align: center;
-            padding: 30px;
+            padding: 80px 20px 70px;
+            background:
+                linear-gradient(135deg, rgba(23, 37, 84, 0.95), rgba(37, 99, 235, 0.86)),
+                url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            background: rgba(20, 184, 166, 0.28);
+            border-radius: 50%;
+            top: -80px;
+            right: -70px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.15rem;
+            margin: 12px 0;
         }
 
         nav {
-            background: #555;
+            background: rgba(23, 37, 84, 0.92);
+            backdrop-filter: blur(10px);
             text-align: center;
-            padding: 10px;
+            padding: 14px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
         }
 
         nav a {
-            color: white;
-            margin: 0 15px;
+            color: #e0f2fe;
+            display: inline-block;
+            margin: 5px 8px;
+            padding: 7px 12px;
             text-decoration: none;
+            font-weight: 700;
+            border-radius: 999px;
+            transition: 0.25s ease;
         }
 
         nav a:hover {
-            color: yellow;
+            background: var(--teal);
+            color: white;
+            transform: translateY(-2px);
         }
 
         .container {
-            max-width: 1000px;
-            margin: auto;
-            background: white;
-            padding: 20px;
+            max-width: 1120px;
+            margin: -35px auto 0;
+            padding: 25px;
+            position: relative;
+            z-index: 2;
         }
 
-        footer {
-            background: #333;
+        section {
+            background: var(--card);
+            margin-bottom: 28px;
+            padding: 28px;
+            border-radius: 24px;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 8px;
+            background: linear-gradient(180deg, var(--blue), var(--teal), var(--amber));
+        }
+
+        section:nth-child(3n+1)::before {
+            background: linear-gradient(180deg, var(--pink), var(--purple));
+        }
+
+        section:nth-child(3n+2)::before {
+            background: linear-gradient(180deg, var(--teal), var(--green));
+        }
+
+        h2 {
+            margin: 0 0 18px;
+            color: var(--navy);
+            font-size: 1.75rem;
+            display: inline-block;
+            padding-bottom: 6px;
+            border-bottom: 4px solid var(--teal);
+        }
+
+        h3 {
+            margin: 18px 0 8px;
+            color: #0f172a;
+            background: linear-gradient(90deg, rgba(37, 99, 235, 0.10), rgba(20, 184, 166, 0.08));
+            padding: 12px 14px;
+            border-radius: 14px;
+            border-left: 5px solid var(--blue);
+        }
+
+        #projects h3 {
+            border-left-color: var(--orange);
+            background: linear-gradient(90deg, rgba(249, 115, 22, 0.13), rgba(245, 158, 11, 0.08));
+        }
+
+        #education h3 {
+            border-left-color: var(--purple);
+            background: linear-gradient(90deg, rgba(139, 92, 246, 0.13), rgba(236, 72, 153, 0.07));
+        }
+
+        #experience li,
+        #membership li,
+        #awards li,
+        #skills p,
+        #contact p {
+            background: #f8fafc;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+        }
+
+        .date {
+            float: right;
+            font-weight: 700;
             color: white;
-            text-align: center;
-            padding: 15px;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            margin-left: 10px;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 22px;
+        }
+
+        li {
+            margin-bottom: 9px;
+        }
+
+        strong {
+            color: var(--navy);
+        }
+
+        a {
+            color: var(--blue);
+            font-weight: 700;
         }
 
         a.button {
             display: inline-block;
-            padding: 10px 20px;
-            background: #333;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--teal), var(--green));
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 999px;
+            box-shadow: 0 12px 28px rgba(20, 184, 166, 0.35);
+            transition: 0.25s ease;
         }
 
         a.button:hover {
-            background: #555;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 32px rgba(20, 184, 166, 0.45);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--navy), #312e81);
+            color: white;
+            text-align: center;
+            padding: 24px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 760px) {
+            header {
+                padding: 55px 15px;
+            }
+
+            nav a {
+                margin: 4px;
+                padding: 6px 9px;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 16px;
+                margin-top: -20px;
+            }
+
+            section {
+                padding: 22px 18px;
+                border-radius: 18px;
+            }
+
+            .date {
+                float: none;
+                display: inline-block;
+                margin: 8px 0 0;
+            }
         }
     </style>
 </head>
@@ -68,9 +266,8 @@
 
 <header>
     <h1>Emran Chowdhury</h1>
-    <p>Ph.D Student | Geoscience at Virginia Tech </p>
+    <p>Ph.D. Student | Geoscience at Virginia Tech</p>
 
-    <!-- YOUR WEBSITE LINK -->
     <p>
         Visit my website:
         <a class="button" href="https://yourusername.github.io/emran-website/" target="_blank">
@@ -81,7 +278,14 @@
 
 <nav>
     <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#articles">Articles</a>
+    <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
+    <a href="#presentations">Presentations</a>
+    <a href="#awards">Awards</a>
+    <a href="#membership">Membership</a>
     <a href="#contact">Contact</a>
 </nav>
 
@@ -90,24 +294,133 @@
     <section id="about">
         <h2>About Me</h2>
         <p>
-            Hi! I'm Emran Chowdhury, a Ph.D. student in the Geoscience Dept at Virginia Tech.
+            Hi! I'm Emran Chowdhury, a Ph.D. student in the Geoscience Department at Virginia Tech.
         </p>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+
+        <h3>Ph.D. in Geoscience <span class="date">January 2025 - Present</span></h3>
+        <p>Virginia Tech University, Blacksburg, Virginia | GPA: 4.00</p>
+
+        <h3>MS in Geology <span class="date">January 2023 - December 2024</span></h3>
+        <p>Oklahoma State University, Stillwater, Oklahoma | GPA: 4.00</p>
+
+        <h3>B.Sc. in Petroleum &amp; Mining Engineering <span class="date">April 2014 - April 2019</span></h3>
+        <p>Shahjalal University of Science &amp; Technology, Sylhet, Bangladesh | CGPA: 3.21</p>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <p><strong>Software:</strong> TOUGHREACT, PetraSim, Paraview, Petrel, ArcGIS, Kingdom, MODFLOW, MS Office</p>
+        <p><strong>Programming:</strong> MATLAB, Python</p>
+    </section>
+
+    <section id="articles">
+        <h2>Articles</h2>
+        <ul>
+            <li>Chanda, P., Pollyea, R., Monecke, T., Chowdhury, E., Ogunleye, J. (2026). Optimizing CO₂-mineralization efficiency under in-situ and ex-situ conditions: A parametric analysis through reactive transport simulation. Under review.</li>
+            <li>Vilcáez, J., Chowdhury, E. (2024). Biogenic Hydrogen Production from Oil Hydrocarbons at Geological Carbon Storage Conditions. <em>Energy Conversion and Management</em>, 325, 119438.</li>
+            <li>Islam, M.S., et al. (2022). Fresh water bearing zone identification using VES at Shahjalal University campus, Sylhet, Bangladesh. <em>Innovative Exploration Methods for Minerals, Oil, Gas, and Groundwater for Sustainable Development</em>, Elsevier.</li>
+        </ul>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <ul>
+            <li>Graduate Research Assistant, Virginia Tech University, Blacksburg, Virginia</li>
+            <li>Graduate Research Assistant, Oklahoma State University, Stillwater, Oklahoma</li>
+            <li>Graduate Teaching Assistant, Oklahoma State University, Stillwater, Oklahoma</li>
+            <li>Undergraduate Research Assistant, Shahjalal University of Science &amp; Technology, Sylhet, Bangladesh</li>
+        </ul>
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
 
-        <h3>Biogenic H2 production from depleted oil reservoir</h3>
-        <p>Experimental works, Numerical modelling, Reactive transport simulation.</p>
+        <h3>In situ mineral carbonation in an ultramafic ore body <span class="date">January 2025 - Present</span></h3>
+        <ul>
+            <li>Developed a reactive transport model in TOUGHREACT to evaluate CO₂ mineralization potential in ultramafic/dunite formations.</li>
+            <li>Simulated CO₂ injection and post-injection behavior to analyze plume migration, pH evolution, mineral dissolution, and precipitation.</li>
+        </ul>
 
-        <h3>Personal Website</h3>
-        <p>This portfolio website built using HTML and CSS.</p>
+        <h3>Carbonation potential of ex-situ flow-through reactor with mine wastes <span class="date">January 2025 - Present</span></h3>
+        <ul>
+            <li>Developed a reactive transport model for an industrial-scale flow-through reactor to evaluate ex-situ CO₂ mineralization.</li>
+            <li>Simulated CO₂-water-rock interactions to identify optimal fluid chemistry, mine waste mineralogy, and grain size distribution.</li>
+        </ul>
+
+        <h3>Biogenic hydrogen production from depleted oil reservoir used for geological carbon storage <span class="date">January 2023 - December 2024</span></h3>
+        <ul>
+            <li>Conducted HPHT batch reactor experiments using supercritical CO₂, produced water, crude oil, and nutrients.</li>
+            <li>Performed reactive transport modeling and field-scale 3D reservoir simulations to evaluate hydrogen generation potential.</li>
+        </ul>
+
+        <h3>Core sample analysis <span class="date">May 2023 - August 2024</span></h3>
+        <ul>
+            <li>Conducted core-flooding experiments on sandstone and carbonate core samples to evaluate petrophysical properties.</li>
+            <li>Operated high-pressure core-holder systems to simulate subsurface reservoir conditions.</li>
+        </ul>
+
+        <h3>SEG EVOLVE Carbon Solution Program <span class="date">September 2025 - February 2026</span></h3>
+        <ul>
+            <li>Conducted well correlation, facies interpretation, and petrophysical analysis for the Bunter Sandstone saline aquifer.</li>
+            <li>Developed static and dynamic reservoir models to assess CO₂ storage capacity, injectivity, and long-term containment.</li>
+        </ul>
+
+        <h3>SEG EVOLVE Energy Exploration Program <span class="date">January 2025 - May 2025</span></h3>
+        <ul>
+            <li>Performed techno-economic evaluation of the Cadna Owie geothermal prospect in the Cooper Basin, Australia.</li>
+            <li>Estimated project design parameters, conducted sensitivity analyses, and evaluated geological, structural, and economic feasibility.</li>
+        </ul>
+
+        <h3>A Numerical Simulation Study of Single-Phase and Multiphase Reservoir <span class="date">September 2018 - December 2018</span></h3>
+        <ul>
+            <li>Developed a numerical reservoir simulation model in Excel using finite-difference methods.</li>
+            <li>Implemented implicit formulation for single-phase flow and IMPES formulation for three-phase black-oil simulation.</li>
+        </ul>
+
+        <h3>Fresh water bearing zone identification using VES <span class="date">January 2017 - May 2017</span></h3>
+        <ul>
+            <li>Conducted Vertical Electrical Sounding surveys using the Schlumberger electrode configuration.</li>
+            <li>Processed and interpreted VES resistivity data using IPI2Win for groundwater and lithological interpretation.</li>
+        </ul>
+    </section>
+
+    <section id="presentations">
+        <h2>Presentations</h2>
+        <ul>
+            <li>Chowdhury, E., Chanda, P., Pollyea, R. M. (2025). Ex-situ CO₂ mineralization in a flow-through reactor with mafic mine wastes. AGU25, New Orleans, LA. Poster Presentation.</li>
+            <li>Chowdhury, E., Vilcáez, J. (2024). Biogenic H₂ Production in Depleted Oil Reservoir Used for Geologic Carbon Storage. AGU24, Washington, D.C. Poster Presentation.</li>
+            <li>Vilcáez, J., Chowdhury, E. (2024). Modeling and simulation of hydrogen storage in depleted oil reservoirs under biotic conditions. Geological Society of America Joint Section Meeting. Poster Presentation.</li>
+            <li>Hasan, R., Chowdhury, E., Hasan, N., Noor, M. R. (2019). A Numerical Simulation Study of Single-Phase and Multiphase Reservoir. ICPE-2019, BUET, Dhaka, Bangladesh. Oral Presentation.</li>
+        </ul>
+    </section>
+
+    <section id="awards">
+        <h2>Awards</h2>
+        <ul>
+            <li>Oklahoma Geological Foundation Award, 2024</li>
+            <li>Skinner Fellowship Award, 2023</li>
+            <li>Boone Pickens School of Geology Fellowship Award, 2023-2024</li>
+        </ul>
+    </section>
+
+    <section id="membership">
+        <h2>Membership</h2>
+        <ul>
+            <li>Member, American Geophysical Union (AGU)</li>
+            <li>Member, Society of Petroleum Engineers (SPE)</li>
+            <li>Member, Geological Society of America (GSA)</li>
+            <li>Member, Society of Exploration Geophysicists (SEG)</li>
+        </ul>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>Email: emran1203@vt.edu</p>
-        <p>GitHub: https://github.com/emran1203</p>
+        <p>Email: <a href="mailto:emran1203@vt.edu">emran1203@vt.edu</a></p>
+        <p>GitHub: <a href="https://github.com/emran1203" target="_blank">https://github.com/emran1203</a></p>
     </section>
 
 </div>
